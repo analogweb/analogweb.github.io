@@ -26,7 +26,7 @@ import org.analogweb.core.httpserver.HttpServers;
 public class Hello {
 
       public static void main(String... args) {
-         HttpServers.create("http://localhost:8080").start();
+         HttpServers.create("http://localhost:9060").start();
       }
 
       @Route
@@ -45,7 +45,7 @@ import org.analogweb.scala.Analogweb
 
 object Run {
     def main(args: Array[String]): Unit = {
-       HttpServers.create("http://localhost:8080").start()
+       HttpServers.create("http://localhost:9060").start()
     }
 }
 
@@ -54,6 +54,12 @@ class Hello extends Analogweb {
        "Hello World"
     }
 }
+```
+
+You will get
+```
+$ curl http://localhost:9060/hello
+$ Hello World
 ```
 
 

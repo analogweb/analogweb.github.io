@@ -15,41 +15,47 @@ At first ,you will checkout [helloworld](https://github.com/analogweb/helloworld
 #  Quick Start
 You will need to install [analogweb-core](https://github.com/analogweb/core) component and write them.
 
-    package org.analogweb.hello;
+{% highlight java %}
+package org.analogweb.hello;
     
-    import org.analogweb.annotation.Route;
-    import org.analogweb.core.httpserver.HttpServers;
+import org.analogweb.annotation.Route;
+import org.analogweb.core.httpserver.HttpServers;
 
-    @Route("/")
-    public class Hello {
+@Route("/")
+public class Hello {
 
-        public static void main(String... args) {
-           HttpServers.create("http://localhost:9060").start();
-        }
-
-        @Route
-        public String hello() {
-           return "Hello World";
-        }
-
+    public static void main(String... args) {
+       HttpServers.create("http://localhost:9060").start();
     }
+
+    @Route
+    public String hello() {
+       return "Hello World";
+    }
+
+}
+{% endhighlight %}
 
 Otherwise, install [scala-plugin](https://github.com/analogweb/scala-plugin) and write them.
 
-    import org.analogweb.core.httpserver.HttpServers
-    import org.analogweb.scala.Analogweb
+{% highlight scala %}
+package org.analogweb.hello
+     
+import org.analogweb.core.httpserver.HttpServers
+import org.analogweb.scala.Analogweb
 
-    object Run {
-       def main(args: Array[String]): Unit = {
-          HttpServers.create("http://localhost:9060").start()
-       }
-    }
+object Run {
+   def main(args: Array[String]): Unit = {
+      HttpServers.create("http://localhost:9060").start()
+   }
+}
     
-    class Hello extends Analogweb {
-       def hello = get("/hello") { request => 
-          "Hello World"
-       }
-    }
+class Hello extends Analogweb {
+   def hello = get("/hello") { request => 
+      "Hello World"
+   }
+}
+{% endhighlight %}
 
 And then You will get
     

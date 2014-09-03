@@ -1,4 +1,4 @@
-Analogweb is tiny, simple, and pluggable web framework.
+Analogweb Framework is tiny, simple, and pluggable web framework.
 
 It helps you quickly building web API.
 
@@ -57,7 +57,7 @@ class Hello extends Analogweb {
 }
 {% endhighlight %}
 
-And then You will get
+Run and You will get
     
     $ curl http://localhost:9060/hello
     $ Hello World

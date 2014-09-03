@@ -1,8 +1,8 @@
 # Site settings
-title: Analogweb Framework 
+title: Analogweb
 email: snowgoose.yk@gmail.com 
 description: > # this means to ignore newlines until "baseurl:"
-  Analogweb is a tiny, simple, and pluggable web routing framework.
+  Analogweb is a tiny, simple, and pluggable web framework.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://analogweb.org" # the base hostname & protocol for your site
 twitter_username: 

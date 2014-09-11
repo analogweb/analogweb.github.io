@@ -10,7 +10,7 @@ It currently supports below servers.
 * [Netty4](http://netty.io) supports [netty-plugin](https://github.com/analogweb/netty-plugin)
 * Servlet(e.g. Jetty,Tomcat,etc...) supports [servlet-plugin](https:github.com/analogweb/servlet-plugin) (if you really want.)
 
-At first ,you will checkout [helloworld](https://github.com/analogweb/helloworld) and execute run/\*.sh
+At first ,you will checkout [helloworld](https://github.com/analogweb/helloworld)(using Java) or [helloworld-scala](https://github.com/analogweb/helloworld-scala)(using Scala) and execute run/\*.sh
 
 #  Quick Start
 You will need to install [analogweb-core](https://github.com/analogweb/core) component and write them.
@@ -25,7 +25,7 @@ import org.analogweb.core.httpserver.HttpServers;
 public class Hello {
 
     public static void main(String... args) {
-       HttpServers.create("http://localhost:9060").start();
+       HttpServers.create("http://localhost:8080").start();
     }
 
     @Route
@@ -46,7 +46,7 @@ import org.analogweb.scala.Analogweb
 
 object Run {
    def main(args: Array[String]): Unit = {
-      HttpServers.create("http://localhost:9060").start()
+      HttpServers.create("http://localhost:8080").start()
    }
 }
     
@@ -59,6 +59,6 @@ class Hello extends Analogweb {
 
 Run and You will get
     
-    $ curl http://localhost:9060/hello
+    $ curl http://localhost:8080/hello
     $ Hello World
 

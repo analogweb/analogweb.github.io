@@ -4,7 +4,7 @@ It helps you quickly building web API.
 
 This framework running on Java and Scala.
 
-It currently supports below servers.
+It currently supports these servers.
 
 * [Sun HttpServer](http://docs.oracle.com/javase/7/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/package-summary.html)
 * [Netty4](http://netty.io) supports [netty-plugin](https://github.com/analogweb/netty-plugin)
@@ -13,7 +13,7 @@ It currently supports below servers.
 At first ,you will checkout [helloworld](https://github.com/analogweb/helloworld)(using Java) or [helloworld-scala](https://github.com/analogweb/helloworld-scala)(using Scala) and execute run/\*.sh
 
 #  Quick Start
-You will need to install [analogweb-core](https://github.com/analogweb/core) component and write them.
+You will need to install [core](https://github.com/analogweb/core) component and write them.
 
 {% highlight java %}
 package org.analogweb.hello;
@@ -29,14 +29,14 @@ public class Hello {
     }
 
     @Route
-    public String hello() {
+    public String helloworld() {
        return "Hello World";
     }
 
 }
 {% endhighlight %}
 
-Otherwise, install [scala-plugin](https://github.com/analogweb/scala-plugin) and write them.
+Otherwise, you also install [scala-plugin](https://github.com/analogweb/scala-plugin) and write them.
 
 {% highlight scala %}
 package org.analogweb.hello
@@ -51,14 +51,14 @@ object Run {
 }
     
 class Hello extends Analogweb {
-   def hello = get("/hello") { request => 
+   def hello = get("/helloworld") { request => 
       "Hello World"
    }
 }
 {% endhighlight %}
 
-Run and You will get
+Run and you will get like this.
     
-    $ curl http://localhost:8080/hello
+    $ curl http://localhost:8080/helloworld
     $ Hello World
 

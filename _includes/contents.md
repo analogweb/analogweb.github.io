@@ -19,13 +19,13 @@ You will need to install [core](https://github.com/analogweb/core) component and
 package org.analogweb.hello;
     
 import org.analogweb.annotation.Route;
-import org.analogweb.core.httpserver.HttpServers;
+import org.analogweb.core.Servers;
 
 @Route("/")
 public class Hello {
 
     public static void main(String... args) {
-       HttpServers.create("http://localhost:8080").start();
+       Servers.create("http://localhost:8080").start();
     }
 
     @Route
@@ -41,17 +41,17 @@ Otherwise, you also install [scala-plugin](https://github.com/analogweb/scala-pl
 {% highlight scala %}
 package org.analogweb.hello
      
-import org.analogweb.core.httpserver.HttpServers
+import org.analogweb.core.Servers
 import org.analogweb.scala.Analogweb
 
 object Run {
    def main(args: Array[String]): Unit = {
-      HttpServers.create("http://localhost:8080").start()
+      Servers.create("http://localhost:8080").start()
    }
 }
     
 class Hello extends Analogweb {
-   def hello = get("/helloworld") { request => 
+   get("/helloworld") { request => 
       "Hello World"
    }
 }

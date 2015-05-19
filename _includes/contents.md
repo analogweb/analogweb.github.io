@@ -6,9 +6,9 @@ This framework running on Java and Scala.
 
 It currently supports these servers.
 
-* [Sun HttpServer](http://docs.oracle.com/javase/7/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/package-summary.html)
+* Built-in non-blocking web server(TLS/SSL are not supported.)
 * [Netty4](http://netty.io) supports [netty-plugin](https://github.com/analogweb/netty-plugin)
-* Servlet(e.g. Jetty,Tomcat,etc...) supports [servlet-plugin](https:github.com/analogweb/servlet-plugin) (if you really want.)
+* Servlet 3+ (e.g. Jetty,Tomcat,etc...) supports [servlet-plugin](https:github.com/analogweb/servlet-plugin)
 
 At first ,you will checkout [helloworld](https://github.com/analogweb/helloworld)(using Java) or [helloworld-scala](https://github.com/analogweb/helloworld-scala)(using Scala) and execute run/\*.sh
 
@@ -25,7 +25,7 @@ import org.analogweb.core.Servers;
 public class Hello {
 
     public static void main(String... args) {
-       Servers.create("http://localhost:8080").start();
+       Servers.run();
     }
 
     @Route
@@ -44,16 +44,14 @@ package org.analogweb.hello
 import org.analogweb.core.Servers
 import org.analogweb.scala.Analogweb
 
-object Run {
-   def main(args: Array[String]): Unit = {
-      Servers.create("http://localhost:8080").start()
-   }
-}
-    
-class Hello extends Analogweb {
-   get("/helloworld") { request => 
-      "Hello World"
-   }
+object Hello extends Analogweb {
+
+  def main(args: Array[String]) = Servers.run
+   
+  get("/helloworld") {
+     "Hello World"
+  }
+
 }
 {% endhighlight %}
 

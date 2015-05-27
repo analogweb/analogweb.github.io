@@ -6,9 +6,9 @@ This framework running on Java and Scala.
 
 It currently supports these servers.
 
-* Built-in non-blocking web server(TLS/SSL are not supported.)
+* Built-in non-blocking HTTP server(TLS/SSL are not supported.)
 * [Netty4](http://netty.io) supports [netty-plugin](https://github.com/analogweb/netty-plugin)
-* Servlet 3+ (e.g. Jetty,Tomcat,etc...) supports [servlet-plugin](https:github.com/analogweb/servlet-plugin)
+* Servlet 2.5+ (e.g. Jetty,Tomcat,etc...) supports [servlet-plugin](https:github.com/analogweb/servlet-plugin)
 
 At first ,you will checkout [helloworld](https://github.com/analogweb/helloworld)(using Java) or [helloworld-scala](https://github.com/analogweb/helloworld-scala)(using Scala) and execute run/\*.sh
 
@@ -46,7 +46,7 @@ import org.analogweb.scala.Analogweb
 
 object Hello extends Analogweb {
 
-  def main(args: Array[String]) = Servers.run
+  def main(args: Array[String]) = Servers.run()
    
   get("/helloworld") {
      "Hello World"

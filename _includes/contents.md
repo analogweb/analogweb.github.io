@@ -1,52 +1,30 @@
-Analogweb Framework is tiny, simple, and pluggable web framework.
+Analogweb Framework is tiny, simple, and pluggable web framework with Scala.
 
-It helps you quickly building web API.
-
-This framework running on Java and Scala.
-
-It currently supports these servers.
+This Framework helps you quickly building web API and currently supports these servers.
 
 * Built-in non-blocking HTTP server(TLS/SSL are not supported.)
-* [Netty4](http://netty.io) supports [netty-plugin](https://github.com/analogweb/netty-plugin)
+* [Netty4](http://netty.io) supports [netty-plugin](https://github.com/analogweb/netty-plugin)(Strongly RECOMMENDED!)
 * Servlet 2.5+ (e.g. Jetty,Tomcat,etc...) supports [servlet-plugin](https:github.com/analogweb/servlet-plugin)
 
-At first ,you will checkout [helloworld](https://github.com/analogweb/helloworld)(using Java) or [helloworld-scala](https://github.com/analogweb/helloworld-scala)(using Scala) and execute run/\*.sh
+First of all ,you will checkout [this project](https://github.com/analogweb/analogweb-scala-examples).
 
 #  Quick Start
-You will need to install [core](https://github.com/analogweb/core) component and write them.
 
-{% highlight java %}
-package org.analogweb.hello;
-    
-import org.analogweb.annotation.Route;
-import org.analogweb.core.Servers;
-
-@Route("/")
-public class Hello {
-
-    public static void main(String... args) {
-       Servers.run();
-    }
-
-    @Route
-    public String helloworld() {
-       return "Hello World";
-    }
-
-}
-{% endhighlight %}
-
-Otherwise, you also install [scala-plugin](https://github.com/analogweb/scala-plugin) and write them.
+You need to add sbt dependency to build.sbt. 
 
 {% highlight scala %}
-package org.analogweb.hello
-     
+"org.analogweb" %% "analogweb-scala" % "0.9.11"
+{% endhighlight %}
+
+And write a code like this.
+
+{% highlight scala %}
 import org.analogweb.core.Servers
 import org.analogweb.scala.Analogweb
 
 object Hello extends Analogweb {
 
-  def main(args: Array[String]) = Servers.run()
+  def main(args: Array[String]) = Servers.run
    
   get("/helloworld") {
      "Hello World"
@@ -55,8 +33,8 @@ object Hello extends Analogweb {
 }
 {% endhighlight %}
 
-Run and you will get like this.
+Execute "sbt run" and you will get them.
     
-    $ curl http://localhost:8080/helloworld
+    $ curl localhost:8000/helloworld
     $ Hello World
 

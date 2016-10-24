@@ -24,7 +24,7 @@ import org.analogweb.scala.Analogweb
 
 object Hello extends Analogweb {
 
-  def main(args: Array[String]) = Servers.run
+  def main(args: Array[String]) = Servers.run()
    
   get("/helloworld") {
      "Hello World"

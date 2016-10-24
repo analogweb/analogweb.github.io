@@ -19,6 +19,7 @@ You need to add sbt dependency to build.sbt.
 And write a code like this.
 
 {% highlight scala %}
+package org.analogweb.example
 import org.analogweb.core.Servers
 import org.analogweb.scala.Analogweb
 

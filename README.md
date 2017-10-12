@@ -1,65 +1,47 @@
-Analogweb Framework
-===================
-
+Analogweb Framework Scala
+===============================================
 Analogweb is tiny, simple, and pluggable routing web framework.
-It helps you quickly building web API.
+It helps you quickly building web API and currently supports below server middleware.
 
-This framework running on Java and Scala.(if JVM it can run on anyware!)
-It currently supports below server middleware.
+- Built-in non-blocking HTTP server(TLS/SSL are not supported.)
+- [Netty4](http://netty.io) supports [netty-plugin](https://github.com/analogweb/netty-plugin)(Strongly RECOMMENDED!)
+- Servlet supports servlet-plugin (if you really want.)
 
-* [Sun HttpServer](http://docs.oracle.com/javase/7/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/package-summary.html)
-* [Netty4](http://netty.io) supports [netty-plugin](https://github.com/analogweb/netty-plugin)
-* Servlet supports servlet-plugin (if you really want.)
+## Quick Start
 
-At first ,you will checkout [helloworld](https://github.com/analogweb/helloworld) and execute run/\*.sh
-
-#  Quick Start
-You will need to install [analogweb-core](https://github.com/analogweb/core) component and write below.
-
-```java
-package org.analogweb.hello;
-
-import org.analogweb.annotation.Route;
-import org.analogweb.core.httpserver.HttpServers;
-
-@Route("/")
-public class Hello {
-
-      public static void main(String... args) {
-         HttpServers.create("http://localhost:9060").start();
-      }
-
-      @Route
-      public String hello() {
-         return "Hello World";
-      }
-
-}
-```
-
-And then install [scala-plugin](https://github.com/analogweb/scala-plugin) and write below.
+Create build.sbt
 
 ```scala
-import org.analogweb.core.httpserver.HttpServers
-import org.analogweb.scala.Analogweb
-
-object Run {
-    def main(args: Array[String]): Unit = {
-       HttpServers.create("http://localhost:9060").start()
-    }
-}
-
-class Hello extends Analogweb {
-    def hello = get("/hello") { request => 
-       "Hello World"
-    }
-}
+scalaVersion := "2.12.1" 
+libraryDependencies ++= Seq (
+  "org.analogweb" %% "analogweb-scala" % "0.10.1-SNAPSHOT"
+)
 ```
 
-You will get
+Start sbt console.
+
 ```
-$ curl http://localhost:9060/hello
-$ Hello World
+$ sbt console
 ```
 
+Write a code.
 
+```scala
+scala> import analogweb._
+import analogweb._
+
+scala> http("localhost",8000) {
+    |   get("ping") { r =>
+    |     "PONG"
+    |   }
+    | }.run
+...
+INFO: An Analogweb application has been booted. (Erapsed time: 412ms)
+```
+
+and you will get them.
+
+```
+$ curl localhost:8000/ping
+PONG
+```

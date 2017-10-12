@@ -13,18 +13,19 @@ First of all ,you will checkout [this project](https://github.com/analogweb/anal
 You need to add sbt dependency to build.sbt. 
 
 {% highlight scala %}
-"org.analogweb" %% "analogweb-scala" % "0.9.12"
+"org.analogweb" %% "analogweb-scala" % "0.9.14"
 {% endhighlight %}
 
 And write a code like this.
 
 {% highlight scala %}
+package org.analogweb.example
 import org.analogweb.core.Servers
 import org.analogweb.scala.Analogweb
 
 object Hello extends Analogweb {
 
-  def main(args: Array[String]) = Servers.run
+  def main(args: Array[String]) = Servers.run()
    
   get("/helloworld") {
      "Hello World"

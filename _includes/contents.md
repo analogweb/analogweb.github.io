@@ -10,28 +10,34 @@ First of all ,you will checkout [this project](https://github.com/analogweb/anal
 
 #  Quick Start
 
-You need to add sbt dependency to build.sbt. 
+You need to add build.sbt.
 
 {% highlight scala %}
-"org.analogweb" %% "analogweb-scala" % "0.9.14"
+scalaVersion := "2.12.1" 
+libraryDependencies ++= Seq (
+  "org.analogweb" %% "analogweb-scala" % "0.10.1-SNAPSHOT"
+)
 {% endhighlight %}
 
-And write a code like this.
+Start a sbt console.
+
+{% highlight bash %}
+$ sbt console
+{% endhighlight %}
+
+Write a code like this.
 
 {% highlight scala %}
-package org.analogweb.example
-import org.analogweb.core.Servers
-import org.analogweb.scala.Analogweb
+scala> import analogweb._
+import analogweb._
 
-object Hello extends Analogweb {
-
-  def main(args: Array[String]) = Servers.run()
-   
-  get("/helloworld") {
-     "Hello World"
-  }
-
-}
+scala> http("localhost",8000) {
+    |   get("ping") { _ =>
+    |     "PONG"
+    |   }
+    | }.run
+...
+INFO: An Analogweb application has been booted. (Erapsed time: 412ms)
 {% endhighlight %}
 
 Execute "sbt run" and you will get them.

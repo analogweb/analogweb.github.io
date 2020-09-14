@@ -1,65 +1,20 @@
-Analogweb Framework
+Analogweb Framework's Website
 ===================
 
-Analogweb is tiny, simple, and pluggable routing web framework.
+https://analogweb.github.io
+
+Analogweb is tiny, simple, and pluggable HTTP routing framework.
+
 It helps you quickly building web API.
 
-This framework running on Java and Scala.(if JVM it can run on anyware!)
-It currently supports below server middleware.
+# Setting up this project
 
-* [Sun HttpServer](http://docs.oracle.com/javase/7/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/package-summary.html)
-* [Netty4](http://netty.io) supports [netty-plugin](https://github.com/analogweb/netty-plugin)
-* Servlet supports servlet-plugin (if you really want.)
+1. Install [Jekyll](https://jekyllrb.com/)
+1. Run `jekyll serve`
+1. Visit `http://localhost:4000`
 
-At first ,you will checkout [helloworld](https://github.com/analogweb/helloworld) and execute run/\*.sh
+# Editing
 
-#  Quick Start
-You will need to install [analogweb-core](https://github.com/analogweb/core) component and write below.
+Documents are located in `_includes` directory.
 
-```java
-package org.analogweb.hello;
-
-import org.analogweb.annotation.Route;
-import org.analogweb.core.httpserver.HttpServers;
-
-@Route("/")
-public class Hello {
-
-      public static void main(String... args) {
-         HttpServers.create("http://localhost:9060").start();
-      }
-
-      @Route
-      public String hello() {
-         return "Hello World";
-      }
-
-}
-```
-
-And then install [scala-plugin](https://github.com/analogweb/scala-plugin) and write below.
-
-```scala
-import org.analogweb.core.httpserver.HttpServers
-import org.analogweb.scala.Analogweb
-
-object Run {
-    def main(args: Array[String]): Unit = {
-       HttpServers.create("http://localhost:9060").start()
-    }
-}
-
-class Hello extends Analogweb {
-    def hello = get("/hello") { request => 
-       "Hello World"
-    }
-}
-```
-
-You will get
-```
-$ curl http://localhost:9060/hello
-$ Hello World
-```
-
-
+You can edit documentation by following [jekyll format](https://jekyllrb.com/docs).
